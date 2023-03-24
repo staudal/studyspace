@@ -12,6 +12,9 @@ const QUERY = gql`
       title
       slug
       level
+      description {
+        html
+      }
       subject {
         id
         title
@@ -49,7 +52,7 @@ export default function Slug({ page }) {
   return (
     <Fragment>
       <Navbar />
-      <SubjectDetails imageURL={page.subject.image.url} title={page.title} />
+      <SubjectDetails page={page} />
     </Fragment>
   )
 }

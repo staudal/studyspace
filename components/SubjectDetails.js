@@ -2,6 +2,7 @@ import { ArrowLongLeftIcon, CheckIcon, HandThumbUpIcon, HomeIcon, MagnifyingGlas
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import Image from 'next/image'
+import TopicTable from './TopicTable'
 
 const user = {
   name: 'Whitney Francis',
@@ -103,7 +104,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function SubjectDetails(props) {
+export default function SubjectDetails({ page }) {
+  function createMarkup() {
+    return { __html: page.description.html }
+  }
+
   return (
     <>
       <div className='min-h-full'>
@@ -113,13 +118,13 @@ export default function SubjectDetails(props) {
             <div className='flex items-center space-x-5'>
               <div className='flex-shrink-0'>
                 <div className='relative'>
-                  <img className='h-16 w-16 rounded-full' src={props.imageURL} alt='' />
+                  <img className='h-16 w-16 rounded-full' src={page.subject.image.url} alt='' />
                   <span className='absolute inset-0 rounded-full shadow-inner' aria-hidden='true' />
                 </div>
               </div>
               <div>
-                <h1 className='text-2xl font-bold text-gray-900'>{props.title}</h1>
-                <p className='text-sm font-medium text-gray-500'>Lorem ipsum dolor sit amet</p>
+                <h1 className='text-2xl font-bold text-gray-900'>{page.title}</h1>
+                <p className='text-sm font-medium text-gray-500'>{page.subject.shortDescription}</p>
               </div>
             </div>
             <div className='justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3'>
@@ -149,61 +154,15 @@ export default function SubjectDetails(props) {
                 <div className='bg-white shadow sm:rounded-lg'>
                   <div className='px-4 py-5 sm:px-6'>
                     <h2 id='applicant-information-title' className='text-lg font-medium leading-6 text-gray-900'>
-                      Kort om faget
+                      Oversigt
                     </h2>
-                    <p className='mt-1 max-w-2xl text-sm text-gray-500'>Personal details and application.</p>
                   </div>
                   <div className='border-t border-gray-200 px-4 py-5 sm:px-6'>
                     <dl className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
-                      <div className='sm:col-span-1'>
-                        <dt className='text-sm font-medium text-gray-500'>Application for</dt>
-                        <dd className='mt-1 text-sm text-gray-900'>Backend Developer</dd>
-                      </div>
-                      <div className='sm:col-span-1'>
-                        <dt className='text-sm font-medium text-gray-500'>Email address</dt>
-                        <dd className='mt-1 text-sm text-gray-900'>ricardocooper@example.com</dd>
-                      </div>
-                      <div className='sm:col-span-1'>
-                        <dt className='text-sm font-medium text-gray-500'>Salary expectation</dt>
-                        <dd className='mt-1 text-sm text-gray-900'>$120,000</dd>
-                      </div>
-                      <div className='sm:col-span-1'>
-                        <dt className='text-sm font-medium text-gray-500'>Phone</dt>
-                        <dd className='mt-1 text-sm text-gray-900'>+1 555-555-5555</dd>
-                      </div>
                       <div className='sm:col-span-2'>
-                        <dt className='text-sm font-medium text-gray-500'>About</dt>
-                        <dd className='mt-1 text-sm text-gray-900'>
-                          Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud
-                          in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-                        </dd>
-                      </div>
-                      <div className='sm:col-span-2'>
-                        <dt className='text-sm font-medium text-gray-500'>Attachments</dt>
-                        <dd className='mt-1 text-sm text-gray-900'>
-                          <ul role='list' className='divide-y divide-gray-200 rounded-md border border-gray-200'>
-                            {attachments.map((attachment) => (
-                              <li key={attachment.name} className='flex items-center justify-between py-3 pl-3 pr-4 text-sm'>
-                                <div className='flex w-0 flex-1 items-center'>
-                                  <PaperClipIcon className='h-5 w-5 flex-shrink-0 text-gray-400' aria-hidden='true' />
-                                  <span className='ml-2 w-0 flex-1 truncate'>{attachment.name}</span>
-                                </div>
-                                <div className='ml-4 flex-shrink-0'>
-                                  <a href={attachment.href} className='font-medium text-blue-600 hover:text-blue-500'>
-                                    Download
-                                  </a>
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
-                        </dd>
+                        <dd className='text-sm text-gray-900 flex flex-col space-y-4' dangerouslySetInnerHTML={createMarkup()}></dd>
                       </div>
                     </dl>
-                  </div>
-                  <div>
-                    <a href='#' className='block bg-gray-50 px-4 py-4 text-center text-sm font-medium text-gray-500 hover:text-gray-700 sm:rounded-b-lg'>
-                      Read full application
-                    </a>
                   </div>
                 </div>
               </section>
@@ -214,77 +173,12 @@ export default function SubjectDetails(props) {
                   <div className='divide-y divide-gray-200'>
                     <div className='px-4 py-5 sm:px-6'>
                       <h2 id='notes-title' className='text-lg font-medium text-gray-900'>
-                        Notes
+                        Pensum
                       </h2>
                     </div>
-                    <div className='px-4 py-6 sm:px-6'>
-                      <ul role='list' className='space-y-8'>
-                        {comments.map((comment) => (
-                          <li key={comment.id}>
-                            <div className='flex space-x-3'>
-                              <div className='flex-shrink-0'>
-                                <img
-                                  className='h-10 w-10 rounded-full'
-                                  src={`https://images.unsplash.com/photo-${comment.imageId}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`}
-                                  alt=''
-                                />
-                              </div>
-                              <div>
-                                <div className='text-sm'>
-                                  <a href='#' className='font-medium text-gray-900'>
-                                    {comment.name}
-                                  </a>
-                                </div>
-                                <div className='mt-1 text-sm text-gray-700'>
-                                  <p>{comment.body}</p>
-                                </div>
-                                <div className='mt-2 space-x-2 text-sm'>
-                                  <span className='font-medium text-gray-500'>{comment.date}</span> <span className='font-medium text-gray-500'>&middot;</span>{' '}
-                                  <button type='button' className='font-medium text-gray-900'>
-                                    Reply
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  <div className='bg-gray-50 px-4 py-6 sm:px-6'>
-                    <div className='flex space-x-3'>
-                      <div className='flex-shrink-0'>
-                        <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' />
-                      </div>
-                      <div className='min-w-0 flex-1'>
-                        <form action='#'>
-                          <div>
-                            <label htmlFor='comment' className='sr-only'>
-                              About
-                            </label>
-                            <textarea
-                              id='comment'
-                              name='comment'
-                              rows={3}
-                              className='block w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:py-1.5 sm:text-sm sm:leading-6'
-                              placeholder='Add a note'
-                              defaultValue={''}
-                            />
-                          </div>
-                          <div className='mt-3 flex items-center justify-between'>
-                            <a href='#' className='group inline-flex items-start space-x-2 text-sm text-gray-500 hover:text-gray-900'>
-                              <QuestionMarkCircleIcon className='h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500' aria-hidden='true' />
-                              <span>Some HTML is okay.</span>
-                            </a>
-                            <button
-                              type='submit'
-                              className='inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'
-                            >
-                              Comment
-                            </button>
-                          </div>
-                        </form>
-                      </div>
+                    <div className='py-5'>
+                      <TopicTable />
+                      <TopicTable />
                     </div>
                   </div>
                 </div>
@@ -294,7 +188,7 @@ export default function SubjectDetails(props) {
             <section aria-labelledby='timeline-title' className='lg:col-span-1 lg:col-start-3'>
               <div className='bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6'>
                 <h2 id='timeline-title' className='text-lg font-medium text-gray-900'>
-                  Timeline
+                  Detaljer
                 </h2>
 
                 {/* Activity Feed */}
