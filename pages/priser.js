@@ -40,7 +40,6 @@ function classNames(...classes) {
 export default function Priser() {
   return (
     <Fragment>
-      <Navbar />
       <div className='relative isolate bg-white py-24 px-6 sm:py-32 lg:px-8 h-full'>
         <div className='absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl' aria-hidden='true'>
           <svg className='mx-auto w-[72.1875rem]' viewBox='0 0 1155 678'>

@@ -5,6 +5,7 @@ import { Fragment } from 'react'
 import SubjectHeader from '@/components/SubjectHeader'
 import SubjectDescription from '@/components/SubjectDescription'
 import SubjectTopics from '@/components/SubjectTopics'
+import SectionHeader from '@/components/SectionHeader'
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
 
@@ -68,18 +69,15 @@ export async function getStaticPaths() {
 export default function Slug({ page }) {
   return (
     <Fragment>
-      <Navbar />
       <div className='min-h-full'>
-        <main className='py-10'>
-          <SubjectHeader page={page} />
-          <div className='mx-auto mt-8 grid max-w-3xl px-4 grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3'>
-            <div className='space-y-6 lg:col-span-2 lg:col-start-1'>
-              <SubjectDescription page={page} />
-              <SubjectTopics topics={page.topics} />
-            </div>
-            <SubjectDetails page={page} />
+        <SectionHeader title={page.title} />
+        <div className='mx-auto mt-8 grid max-w-3xl px-4 grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3'>
+          <div className='space-y-6 lg:col-span-2 lg:col-start-1'>
+            <SubjectDescription page={page} />
+            <SubjectTopics topics={page.topics} />
           </div>
-        </main>
+          <SubjectDetails page={page} />
+        </div>
       </div>
     </Fragment>
   )

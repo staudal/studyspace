@@ -25,7 +25,7 @@ function SubjectCard({ subject }) {
           </div>
           <p className='mt-1 truncate text-sm text-gray-500'>{subject.shortDescription}</p>
         </div>
-        <img className='h-10 w-10 flex-shrink-0 rounded-lg bg-gray-300' src={subject.image.url} alt='' />
+        <img className='h-12 w-12 flex-shrink-0 rounded-lg bg-gray-300' src={subject.image.url} alt='' />
       </div>
       <div className='-mt-px flex divide-x divide-gray-200 bg-gray-50 rounded-b-lg'>
         {pages.map((page) => (
