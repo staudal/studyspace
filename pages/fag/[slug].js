@@ -72,7 +72,7 @@ export default function Slug({ page }) {
       <div className='min-h-full'>
         <main className='py-10'>
           <SubjectHeader page={page} />
-          <div className='mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3'>
+          <div className='mx-auto mt-8 grid max-w-3xl px-4 grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3'>
             <div className='space-y-6 lg:col-span-2 lg:col-start-1'>
               <SubjectDescription page={page} />
               <SubjectTopics topics={page.topics} />

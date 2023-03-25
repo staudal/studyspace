@@ -10,7 +10,7 @@ function SubjectTopics({ topics }) {
               Pensum
             </h2>
           </div>
-          <div className='py-5'>
+          <div className='py-5 sm:px-0 px-4'>
             {topics.map((topic) => (
               <TopicTable key={topic.id} topic={topic} />
             ))}
