@@ -37,6 +37,19 @@ export async function getStaticProps() {
 }
 
 export default function Home({ subjects }) {
+  // sort subjects by title
+  function compare(a, b) {
+    if (a.title < b.title) {
+      return -1
+    }
+    if (a.title > b.title) {
+      return 1
+    }
+    return 0
+  }
+
+  subjects.sort(compare)
+
   return (
     <Fragment>
       <Navbar />

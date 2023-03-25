@@ -1,8 +1,8 @@
-import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { PlusIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const user = {
   name: 'Tom Cook',
@@ -10,10 +10,8 @@ const user = {
   imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-  { name: 'Oversigt', href: '/', current: true },
+  { name: 'Fag', href: '/', current: true },
   { name: 'Priser', href: '/priser', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -26,6 +24,8 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const router = useRouter()
+
   return (
     <Disclosure as='nav' className='bg-gray-800'>
       {({ open }) => (
@@ -49,7 +49,7 @@ export default function Navbar() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className={classNames(item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium')}
+                      className={classNames(item.href === router.asPath ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium')}
                       aria-current={item.current ? 'page' : undefined}
                     >
                       {item.name}

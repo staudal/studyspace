@@ -66,8 +66,6 @@ export async function getStaticPaths() {
 }
 
 export default function Slug({ page }) {
-  console.log(page)
-
   return (
     <Fragment>
       <Navbar />
