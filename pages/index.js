@@ -2,7 +2,6 @@ import Navbar from '@/components/Navbar'
 import { Fragment } from 'react'
 import { GraphQLClient, gql } from 'graphql-request'
 import SubjectCard from '@/components/SubjectCard'
-import Link from 'next/link'
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
 
@@ -33,6 +32,7 @@ export async function getStaticProps() {
     props: {
       subjects,
     },
+    revalidate: 10,
   }
 }
 
