@@ -21,7 +21,7 @@ export default function Example() {
           <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>Opret konto</h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
             eller{' '}
-            <Link href='/login' className='font-medium text-indigo-600 hover:text-indigo-500'>
+            <Link href='/login' className='font-medium text-pink-600 hover:text-pink-500'>
               log ind
             </Link>
           </p>
@@ -84,7 +84,7 @@ export default function Example() {
               <div>
                 <button
                   type='submit'
-                  className='flex w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                  className='flex w-full justify-center rounded-md bg-pink-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                 >
                   Opret konto
                 </button>
