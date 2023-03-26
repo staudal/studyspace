@@ -3,6 +3,8 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { PlusIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import studyspaceLogo from '../public/studyspace-logo-blue.svg'
+import Image from 'next/image'
 
 const user = {
   name: 'Tom Cook',
@@ -41,8 +43,7 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 <div className='flex flex-shrink-0 items-center'>
-                  <img className='block h-8 w-auto lg:hidden' src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500' alt='Your Company' />
-                  <img className='hidden h-8 w-auto lg:block' src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500' alt='Your Company' />
+                  <Image src={studyspaceLogo} height={30} />
                 </div>
                 <div className='hidden md:ml-6 md:flex md:items-center md:space-x-4'>
                   {navigation.map((item) => (
