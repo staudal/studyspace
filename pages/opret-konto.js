@@ -17,7 +17,6 @@ export default function Example() {
     <>
       <div className='flex h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
-          <img className='mx-auto h-12 w-auto' src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600' alt='Your Company' />
           <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>Opret konto</h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
             eller{' '}
@@ -41,7 +40,7 @@ export default function Example() {
                     type='text'
                     autoComplete='name'
                     required
-                    className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                    className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pink-600 sm:text-sm sm:leading-6'
                     onChange={(event) => setName(event.target.value)}
                   />
                 </div>
@@ -58,7 +57,7 @@ export default function Example() {
                     type='email'
                     autoComplete='email'
                     required
-                    className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                    className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pink-600 sm:text-sm sm:leading-6'
                     onChange={(event) => setEmail(event.target.value)}
                   />
                 </div>
@@ -75,7 +74,7 @@ export default function Example() {
                     type='password'
                     autoComplete='current-password'
                     required
-                    className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                    className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pink-600 sm:text-sm sm:leading-6'
                     onChange={(event) => setPassword(event.target.value)}
                   />
                 </div>

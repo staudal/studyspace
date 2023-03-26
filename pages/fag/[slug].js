@@ -6,6 +6,7 @@ import SubjectHeader from '@/components/SubjectHeader'
 import SubjectDescription from '@/components/SubjectDescription'
 import SubjectTopics from '@/components/SubjectTopics'
 import SectionHeader from '@/components/SectionHeader'
+import SectionBreadcrumb from '@/components/SectionBreadcrumb'
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
 
@@ -70,12 +71,14 @@ export default function Slug({ page }) {
   return (
     <Fragment>
       <SectionHeader title={page.title} />
-      <div className='mx-auto py-10 grid max-w-3xl px-4 grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3'>
-        <div className='space-y-6 lg:col-span-2 lg:col-start-1'>
-          <SubjectDescription page={page} />
-          <SubjectTopics topics={page.topics} />
+      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex flex-col space-y-6'>
+        <div className='grid grid-cols-1 gap-6 lg:grid-flow-col-dense lg:grid-cols-3'>
+          <div className='space-y-6 lg:col-span-2 lg:col-start-1'>
+            <SubjectDescription page={page} />
+            <SubjectTopics topics={page.topics} />
+          </div>
+          <SubjectDetails page={page} />
         </div>
-        <SubjectDetails page={page} />
       </div>
     </Fragment>
   )

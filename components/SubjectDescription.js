@@ -5,7 +5,7 @@ function SubjectDescription({ page }) {
 
   return (
     <section aria-labelledby='applicant-information-title'>
-      <div className='bg-white shadow sm:rounded-lg'>
+      <div className='bg-white shadow rounded-lg'>
         <div className='px-4 py-5 sm:px-6'>
           <h2 id='applicant-information-title' className='text-lg font-medium leading-6 text-gray-900'>
             Oversigt

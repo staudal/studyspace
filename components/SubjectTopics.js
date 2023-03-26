@@ -1,21 +1,14 @@
 import { Fragment } from 'react'
-
-const locations = [
-  {
-    name: 'Edinburgh',
-    people: [
-      { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-      { name: 'Courtney Henry', title: 'Designer', email: 'courtney.henry@example.com', role: 'Admin' },
-    ],
-  },
-  // More people...
-]
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function SubjectTopics({ topics }) {
+  const router = useRouter()
+
   return (
     <div className='mt-8 flow-root shadow rounded-lg'>
       <div className='overflow-x-auto rounded-lg'>
@@ -43,10 +36,8 @@ export default function SubjectTopics({ topics }) {
                     <tr key={subtopic.id} className='border-gray-200 border-t divide-x'>
                       <td className='whitespace-nowrap py-4 px-4 sm:px-6 text-sm text-center font-medium text-gray-900'>{subtopic.number}</td>
                       <td className='whitespace-nowrap px-4 sm:px-6 py-4 text-sm text-gray-500'>{subtopic.title}</td>
-                      <td className='relative whitespace-nowrap py-4 px-4 sm:px-6 text-center text-sm font-medium'>
-                        <a href='#' className='text-indigo-600 hover:text-indigo-900'>
-                          Lær
-                        </a>
+                      <td className='relative whitespace-nowrap px-4 sm:px-6 text-center text-sm font-medium cursor-pointer hover:bg-gray-100 text-gray-900' onClick={() => router.push('#')}>
+                        Gå til
                       </td>
                     </tr>
                   ))}
