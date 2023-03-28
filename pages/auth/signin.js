@@ -32,7 +32,7 @@ function signin() {
     if (result.ok) {
       setEmailError(false)
       setPasswordError(false)
-      router.push('/')
+      window.location.href = '/'
     }
   }
 
