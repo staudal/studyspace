@@ -32,6 +32,7 @@ function signin() {
     // if there is no error, redirect to homepage
     if (!result.error) {
       router.push('/')
+      router.reload()
     }
   }
 
