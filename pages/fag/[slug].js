@@ -1,12 +1,9 @@
-import Navbar from '@/components/Navbar'
 import SubjectDetails from '@/components/SubjectDetails'
 import { GraphQLClient, gql } from 'graphql-request'
-import { Fragment } from 'react'
-import SubjectHeader from '@/components/SubjectHeader'
+import { Fragment, useEffect } from 'react'
 import SubjectDescription from '@/components/SubjectDescription'
 import SubjectTopics from '@/components/SubjectTopics'
 import SectionHeader from '@/components/SectionHeader'
-import SectionBreadcrumb from '@/components/SectionBreadcrumb'
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
 
