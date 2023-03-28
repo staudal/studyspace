@@ -7,6 +7,8 @@ export function middleware(req) {
     sessionCookie = req.cookies.get('__Secure-next-auth.session-token')
   }
 
+  console.log(sessionCookie)
+
   if (req.nextUrl.pathname.startsWith('/fag')) {
     if (!sessionCookie) {
       const url = req.nextUrl.clone()

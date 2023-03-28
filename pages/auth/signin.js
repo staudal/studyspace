@@ -29,9 +29,9 @@ function signin() {
       setPasswordError(true)
     }
 
-    // if there is no error, redirect to homepage
-    if (!result.error) {
-      router.reload()
+    if (result.ok) {
+      setEmailError(false)
+      setPasswordError(false)
       router.push('/')
     }
   }
