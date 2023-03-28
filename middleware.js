@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export function middleware(req) {
-  const sessionCookie = req.cookies.get('next-auth.session-token')
+  const sessionCookie = req.cookies.get('next-auth.session-token' || '__Secure-next-auth.session-token')
 
   if (req.nextUrl.pathname.startsWith('/fag')) {
     if (!sessionCookie) {
