@@ -60,7 +60,9 @@ export default NextAuth({
         // if password is valid, return user and token
         if (isValid) {
           return {
-            user,
+            id: user.id,
+            username: email,
+            email,
           }
         }
       },

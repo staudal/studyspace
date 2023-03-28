@@ -2,14 +2,12 @@ import { useRef, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import ErrorMessage from '@/components/ErrorMessage'
-import { useRouter } from 'next/router'
 
 function signin() {
   const email = useRef('')
   const password = useRef('')
   const [emailError, setEmailError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
-  const router = useRouter()
 
   async function onSubmit(event) {
     event.preventDefault()
@@ -32,7 +30,7 @@ function signin() {
     if (result.ok) {
       setEmailError(false)
       setPasswordError(false)
-      router.push('/')
+      window.location.href = '/'
     }
   }
 
