@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import studyspaceLogo from '../public/studyspace-logo-pink.svg'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 const user = {
   name: 'Tom Cook',
@@ -27,6 +28,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const router = useRouter()
+  const { data: session, status } = useSession()
 
   return (
     <Disclosure as='nav' className='bg-gray-900'>
@@ -65,15 +67,23 @@ export default function Navbar() {
               {/* Right side */}
               <div className='flex items-center'>
                 <div className='flex-shrink-0'>
-                  <Link href='/opret-konto'>
+                  {session ? (
                     <button
-                      type='button'
                       className='relative inline-flex items-center gap-x-1.5 rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+                      onClick={signOut}
                     >
-                      <PlusIcon className='-ml-0.5 h-5 w-5' aria-hidden='true' />
-                      Opret konto
+                      Sign out
                     </button>
-                  </Link>
+                  ) : (
+                    <>
+                      <button
+                        className='relative inline-flex items-center gap-x-1.5 rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+                        onClick={signIn}
+                      >
+                        Sign in
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
