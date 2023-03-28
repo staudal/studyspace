@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { GraphQLClient, gql } from 'graphql-request'
 import SubjectCard from '@/components/SubjectCard'
 import SectionHeader from '@/components/SectionHeader'
+import MainSection from '@/components/MainSection'
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
 
@@ -53,13 +54,14 @@ export default function Home({ subjects }) {
 
   return (
     <Fragment>
-      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10'>
+      <SectionHeader title='Oversigt over fag' />
+      <MainSection>
         <ul role='list' className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {subjects.map((subject) => (
             <SubjectCard key={subject.id} subject={subject} />
           ))}
         </ul>
-      </div>
+      </MainSection>
     </Fragment>
   )
 }
