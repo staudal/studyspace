@@ -46,7 +46,7 @@ export default NextAuth({
 
         // if user does not exist, throw an error
         if (!user) {
-          throw new Error('Wrong credentials. Try again.')
+          throw new Error('user does not exist')
         }
 
         // if user exists, check if password is valid
@@ -54,7 +54,7 @@ export default NextAuth({
 
         // if password is not valid, throw an error
         if (!isValid) {
-          throw new Error('Wrong credentials. Try again.')
+          throw new Error('password is not valid')
         }
 
         // if password is valid, return user

@@ -1,19 +1,36 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
+import ErrorMessage from '@/components/ErrorMessage'
 
 function signin() {
   const email = useRef('')
   const password = useRef('')
+  const [emailError, setEmailError] = useState(false)
+  const [passwordError, setPasswordError] = useState(false)
 
   async function onSubmit(event) {
     event.preventDefault()
     const result = await signIn('signin', {
       email: email.current,
       password: password.current,
-      redirect: true,
-      callbackUrl: '/',
+      redirect: false,
     })
+
+    if (result.error === 'user does not exist') {
+      setEmailError(true)
+      setPasswordError(false)
+    }
+
+    if (result.error === 'password is not valid') {
+      setEmailError(false)
+      setPasswordError(true)
+    }
+
+    // if there is no error, redirect to homepage
+    if (!result.error) {
+      window.location.href = '/'
+    }
   }
 
   return (
@@ -29,7 +46,9 @@ function signin() {
           </p>
         </div>
 
-        <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
+        <div className='mt-8 flex flex-col space-y-6 sm:mx-auto sm:w-full sm:max-w-md'>
+          {emailError ? <ErrorMessage title='Der blev ikke fundet nogen bruger med denne email' /> : null}
+          {passwordError ? <ErrorMessage title='Du har indtastet en forkert adgangskode' /> : null}
           <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
             <form className='space-y-6' onSubmit={onSubmit}>
               <div>
@@ -66,21 +85,6 @@ function signin() {
                 </div>
               </div>
 
-              <div className='flex items-center justify-between'>
-                <div className='flex items-center'>
-                  <input id='remember-me' name='remember-me' type='checkbox' className='h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-600' />
-                  <label htmlFor='remember-me' className='ml-2 block text-sm text-gray-900'>
-                    Husk mig
-                  </label>
-                </div>
-
-                <div className='text-sm'>
-                  <a href='#' className='font-medium text-pink-600 hover:text-pink-500'>
-                    Glemt adgangskode?
-                  </a>
-                </div>
-              </div>
-
               <div>
                 <button
                   type='submit'
@@ -88,6 +92,13 @@ function signin() {
                 >
                   Log ind
                 </button>
+              </div>
+              <div className='flex items-center justify-center'>
+                <div className='text-sm'>
+                  <a href='#' className='font-medium text-pink-600 hover:text-pink-500'>
+                    Glemt adgangskode?
+                  </a>
+                </div>
               </div>
             </form>
 
