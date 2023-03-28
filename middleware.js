@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export function middleware(req) {
-  const sessionCookie = req.cookies.get('next-auth.session-token')
+  let sessionCookie = req.cookies.get('next-auth.session-token')
 
   if (!sessionCookie) {
     sessionCookie = req.cookies.get('__Secure-next-auth.session-token')
