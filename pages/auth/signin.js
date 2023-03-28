@@ -30,9 +30,8 @@ function signin() {
     }
 
     if (result.ok) {
-      setEmailError(false)
-      setPasswordError(false)
-      window.location.href = '/'
+      router.push('/')
+      return
     }
   }
 
