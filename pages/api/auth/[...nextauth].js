@@ -57,11 +57,11 @@ export default NextAuth({
           throw new Error('password is not valid')
         }
 
-        // if password is valid, return user
-        return {
-          id: user.id,
-          username: email,
-          email,
+        // if password is valid, return user and token
+        if (isValid) {
+          return {
+            user,
+          }
         }
       },
     }),
