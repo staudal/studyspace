@@ -2,6 +2,7 @@ import { ArrowLongLeftIcon, CheckIcon, HandThumbUpIcon, HomeIcon, MagnifyingGlas
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 const user = {
   name: 'Whitney Francis',
@@ -110,6 +111,10 @@ function classNames(...classes) {
 }
 
 function SubjectDetails({ page }) {
+  const router = useRouter()
+
+  const currentURL = router.asPath
+
   return (
     <section aria-labelledby='timeline-title' className='lg:col-span-1 lg:col-start-3 sm:h-screen sm:sticky sm:top-6'>
       <div className='bg-white px-4 py-5 shadow rounded-lg sm:px-6'>
@@ -149,12 +154,14 @@ function SubjectDetails({ page }) {
           </ul>
         </div>
         <div className='justify-stretch mt-6 flex flex-col'>
-          <button
-            type='button'
-            className='inline-flex items-center justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'
-          >
-            Begynd
-          </button>
+          <Link href='#'>
+            <button
+              type='button'
+              className='w-full inline-flex items-center justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'
+            >
+              Begynd
+            </button>
+          </Link>
         </div>
       </div>
     </section>

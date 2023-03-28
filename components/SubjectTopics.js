@@ -8,6 +8,7 @@ function classNames(...classes) {
 
 export default function SubjectTopics({ topics }) {
   const router = useRouter()
+  const currentURL = router.asPath
 
   return (
     <div className='mt-8 flow-root shadow rounded-lg'>

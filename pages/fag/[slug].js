@@ -31,6 +31,7 @@ const QUERY = gql`
       topics {
         id
         title
+        slug
         intro {
           html
         }
