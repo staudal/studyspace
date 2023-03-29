@@ -31,7 +31,7 @@ function SubjectCard({ subject }) {
         {pages.map((page) => (
           <div key={page.id} className='w-0 flex-1 flex hover:bg-gray-100 first:hover:rounded-bl-lg last:hover:rounded-br-lg'>
             <Link
-              href={page.slug}
+              href={'/fag/' + page.slug}
               className='relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900'
             >
               Niveau {page.level}
