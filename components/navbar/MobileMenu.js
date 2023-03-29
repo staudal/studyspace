@@ -1,22 +1,34 @@
 import { Disclosure } from '@headlessui/react'
 import { BellIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-function MobileMenu() {
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
+function MobileMenu({ navigation }) {
+  const router = useRouter()
+
+  navigation.forEach((item) => {
+    if (router.pathname === item.href) {
+      item.current = true
+    } else {
+      item.current = false
+    }
+  })
   return (
     <Disclosure.Panel className='lg:hidden'>
       <div className='space-y-1 px-2 pb-3 pt-2'>
-        <Disclosure.Button as='a' href='#' className='block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white'>
-          Dashboard
-        </Disclosure.Button>
-        <Disclosure.Button as='a' href='#' className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
-          Team
-        </Disclosure.Button>
-        <Disclosure.Button as='a' href='#' className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
-          Projects
-        </Disclosure.Button>
-        <Disclosure.Button as='a' href='#' className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
-          Calendar
-        </Disclosure.Button>
+        {navigation.map((item) => (
+          <Disclosure.Button
+            key={item.name}
+            className={classNames(item.current ? 'bg-gray-100' : 'hover:bg-gray-100', 'px-3 py-2 rounded-md text-sm font-medium text-black')}
+            aria-current={item.current ? 'page' : undefined}
+          >
+            <Link href={item.href}>{item.name}</Link>
+          </Disclosure.Button>
+        ))}
       </div>
       <div className='border-t border-gray-700 pb-3 pt-4'>
         <div className='flex items-center px-5'>

@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { CheckCircleIcon, UserCircleIcon } from '@heroicons/react/20/solid'
+import { UserIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import { signOut } from 'next-auth/react'
 
@@ -31,13 +31,13 @@ const menuItems = [
 
 function ProfileButton() {
   return (
-    <div className='hidden lg:ml-4 lg:block'>
+    <div className='hidden lg:block'>
       <div className='flex items-center'>
         {/* Profile dropdown */}
-        <Menu as='div' className='relative ml-4 flex-shrink-0'>
+        <Menu as='div' className='relative ml-2 flex-shrink-0'>
           <div>
-            <Menu.Button className='inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-              <UserCircleIcon className='-mr-0.5 h-5 w-5' aria-hidden='true' />
+            <Menu.Button className='inline-flex items-center gap-x-1.5 rounded-md bg-pink-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-pink-500'>
+              <UserIcon className='-mr-0.5 h-5 w-5' aria-hidden='true' />
               Min konto
             </Menu.Button>
           </div>

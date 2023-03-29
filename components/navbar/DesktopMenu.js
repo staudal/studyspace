@@ -5,14 +5,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const navigation = [
-  { name: 'Oversigt', href: '/', current: false },
-  { name: 'Priser', href: '/priser', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
-
-function DesktopMenu() {
+function DesktopMenu({ navigation }) {
   const router = useRouter()
 
   navigation.forEach((item) => {
@@ -34,7 +27,7 @@ function DesktopMenu() {
           {navigation.map((item) => (
             <Link
               key={item.name}
-              className={classNames(item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium')}
+              className={classNames(item.current ? 'bg-gray-100' : 'hover:bg-gray-100', 'px-3 py-2 rounded-md text-sm font-medium text-black')}
               href={item.href}
               aria-current={item.current ? 'page' : undefined}
             >
