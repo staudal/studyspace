@@ -48,7 +48,7 @@ const QUERY = gql`
 
 export async function getStaticProps({ params }) {
   const { page } = await graphcms.request(QUERY, {
-    slug: params.slug,
+    slug: params.subject,
   })
   return {
     props: {
@@ -65,7 +65,7 @@ export async function getStaticPaths() {
   }
 }
 
-export default function Slug({ page }) {
+export default function Page({ page }) {
   return (
     <Fragment>
       <SectionHeader title={page.title} />
