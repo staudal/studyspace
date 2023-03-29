@@ -148,7 +148,13 @@ export default function Example() {
               </div>
               <div className='mt-3 space-y-1 px-2 sm:px-3'>
                 {userNavigation.map((item) => (
-                  <Disclosure.Button key={item.name} as='a' href={item.href} className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'>
+                  <Disclosure.Button
+                    key={item.name}
+                    as='a'
+                    href={item.href}
+                    className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
+                    onClick={item.onClick != undefined ? item.onClick : null}
+                  >
                     {item.name}
                   </Disclosure.Button>
                 ))}
