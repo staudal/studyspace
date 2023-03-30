@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/20/solid'
 import { GraphQLClient, gql } from 'graphql-request'
 import MainSection from '@/components/topic/MainSection'
+import DesktopSidebar from '@/components/topic/DesktopSidebar'
+import Breadcrumb from '@/components/topic/Breadcrumb'
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
 const QUERY = gql`
@@ -39,9 +41,6 @@ export async function getStaticPaths() {
     fallback: 'blocking',
   }
 }
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function Page({ topics }) {
   const [activeTopic, setActiveTopic] = useState({})
@@ -71,52 +70,16 @@ export default function Page({ topics }) {
     })
   }
 
-  function createMarkup(item) {
-    return { __html: item.topic.intro.html }
-  }
-
   return (
     <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
       <div className='flex h-full'>
         <main className='flex flex-1 overflow-hidden min-h-screen'>
           <div className='flex flex-1 flex-col overflow-y-auto xl:overflow-hidden'>
             {/* Breadcrumb */}
-            <nav aria-label='Breadcrumb' className='border-b border-slate-200 bg-white xl:hidden'>
-              <div className='mx-auto flex max-w-3xl items-start px-4 py-3 sm:px-6 lg:px-8'>
-                <a href='#' className='-ml-1 inline-flex items-center space-x-3 text-sm font-medium text-slate-900'>
-                  <ChevronLeftIcon className='h-5 w-5 text-slate-400' aria-hidden='true' />
-                  <span>{pageTitle}</span>
-                </a>
-              </div>
-            </nav>
+            <Breadcrumb pageTitle={pageTitle} />
 
             <div className='flex flex-1 xl:overflow-hidden'>
-              {/* Secondary sidebar */}
-              <nav aria-label='Sections' className='hidden w-96 flex-shrink-0 border-r border-l border-slate-200 bg-white xl:flex xl:flex-col'>
-                <div className='flex h-16 flex-shrink-0 items-center border-b border-slate-200 px-6'>
-                  <p className='text-lg font-medium text-slate-900'>{pageTitle}</p>
-                </div>
-                <div className='min-h-0 flex-1 overflow-y-auto'>
-                  {subNavigation.map((item) => (
-                    <div
-                      key={item.topic.id}
-                      className={classNames(item.topic.current ? 'bg-blue-50 bg-opacity-50' : 'hover:bg-blue-50 hover:bg-opacity-50', 'border-slate-200 flex border-b p-6 cursor-pointer group')}
-                      aria-current={item.topic.current ? 'page' : undefined}
-                      onClick={() => onClickHandler(item)}
-                    >
-                      <div className='ml-3 text-sm'>
-                        <p className='font-medium text-slate-900 line-clamp-1'>
-                          {item.topic.number}. {item.topic.title}
-                        </p>
-                        <dd className='mt-1 text-slate-500 line-clamp-2' dangerouslySetInnerHTML={createMarkup(item)}></dd>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </nav>
-
-              {/* Main content */}
-
+              <DesktopSidebar subNavigation={subNavigation} pageTitle={pageTitle} onClickHandler={onClickHandler} />
               <MainSection topic={activeTopic} />
             </div>
           </div>
