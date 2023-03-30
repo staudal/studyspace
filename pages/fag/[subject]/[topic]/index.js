@@ -38,8 +38,11 @@ export async function getStaticPaths() {
 
 export default function Page({ topic }) {
   return (
-    <Fragment>
-      <SectionHeader title={topic.title} />
-    </Fragment>
+    <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+      <div className='relative mx-auto flex max-w-8xl justify-center'>
+        <Sidebar />
+        <div className='min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pl-8 lg:pr-0 xl:px-16'>Hello</div>
+      </div>
+    </div>
   )
 }
