@@ -154,7 +154,7 @@ function SubjectDetails({ page }) {
           </ul>
         </div>
         <div className='justify-stretch mt-6 flex flex-col'>
-          <Link href={page.slug + '/indhold'}>
+          <Link href={page.slug + '/' + page.topics[0].slug}>
             <button
               type='button'
               className='w-full inline-flex items-center justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'
