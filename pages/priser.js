@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/general/Navbar'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { Fragment } from 'react'
 import { Disclosure } from '@headlessui/react'

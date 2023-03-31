@@ -3,7 +3,8 @@ import { GraphQLClient, gql } from 'graphql-request'
 import { Fragment, useEffect } from 'react'
 import SubjectTopics from '@/components/SubjectTopics'
 import Card from '@/components/card/Card'
-import SectionHeader from '@/components/SectionHeader'
+import SectionHeader from '@/components/general/SectionHeader'
+import MainSection from '@/components/MainSection'
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
 
@@ -54,15 +55,18 @@ export async function getStaticPaths() {
 export default function Page({ page }) {
   return (
     <Fragment>
-      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex flex-col space-y-6'>
-        <div className='grid grid-cols-1 gap-6 lg:grid-flow-col-dense lg:grid-cols-3'>
-          <div className='lg:col-span-2 lg:col-start-1'>
-            <Card title={page.title} intro={page.intro} content={page.content.html} />
-            <SubjectTopics topics={page.topics} />
+      <SectionHeader title={page.title} />
+      <MainSection>
+        <div className='flex flex-col space-y-6'>
+          <div className='grid grid-cols-1 gap-6 lg:grid-flow-col-dense lg:grid-cols-3'>
+            <div className='lg:col-span-2 lg:col-start-1'>
+              <Card title='Intro til faget' content={page.content.html} />
+              <SubjectTopics topics={page.topics} />
+            </div>
+            <SubjectDetails page={page} />
           </div>
-          <SubjectDetails page={page} />
         </div>
-      </div>
+      </MainSection>
     </Fragment>
   )
 }

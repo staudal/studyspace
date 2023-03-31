@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { EnvelopeIcon } from '@heroicons/react/20/solid'
 
 function SubjectCard({ subject }) {
   // sort pages by level

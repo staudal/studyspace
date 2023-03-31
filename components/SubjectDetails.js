@@ -1,5 +1,5 @@
 import { ArrowLongLeftIcon, CheckIcon, HandThumbUpIcon, HomeIcon, MagnifyingGlassIcon, PaperClipIcon, QuestionMarkCircleIcon, UserIcon } from '@heroicons/react/20/solid'
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/general/Navbar'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -154,7 +154,7 @@ function SubjectDetails({ page }) {
           </ul>
         </div>
         <div className='justify-stretch mt-6 flex flex-col'>
-          <Link href={page.slug + '/' + page.topics[0].slug}>
+          <Link href='#'>
             <button
               type='button'
               className='w-full inline-flex items-center justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'

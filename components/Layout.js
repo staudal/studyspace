@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
-import Navbar from './Navbar'
+import Navbar from './general/Navbar'
+import MainSection from './MainSection'
 
 function Layout({ children }) {
   return (
