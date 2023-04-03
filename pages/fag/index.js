@@ -3,6 +3,7 @@ import { GraphQLClient, gql } from 'graphql-request'
 import SectionHeader from '@/components/general/SectionHeader'
 import SubjectCards from '@/components/subject/SubjectCards'
 import MainSection from '@/components/MainSection'
+import SectionBreadcrumbs from '@/components/general/SectionBreadcrumbs'
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
 
@@ -38,9 +39,11 @@ export async function getStaticProps() {
 }
 
 export default function Home({ subjects }) {
+  const breadcrumbs = [{ name: 'Fag', href: '/fag', current: true }]
+
   return (
     <Fragment>
-      <SectionHeader title='Oversigt over fag' />
+      <SectionBreadcrumbs breadcrumbs={breadcrumbs} />
       <MainSection>
         <SubjectCards subjects={subjects} />
       </MainSection>
